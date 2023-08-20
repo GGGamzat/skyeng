@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+</head>
+<body>
+    <div class="block_form">
+		<a href="{% url 'home' %}"></a>
+		<h3>Войдите</h3>
+		<form class="register" method='post'>
+			{% csrf_token %}
+
+			{{ form.email }}
+			{{ form.password }}
+
+			<input class="button" type="submit" value='Войти'>
+		</form>
+		<a href="{% url 'register' %}">Зарегистрироваться</a>
+	</div>
+</body>
+</html>

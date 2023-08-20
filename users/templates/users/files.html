@@ -1,0 +1,21 @@
+{% extends 'home/layout.html' %}
+
+{% load static %}
+
+{% block title %}
+    Файлы
+{% endblock %}
+
+{% block main %}
+    <h1>Файлы</h1>
+    <div>
+        {% for file in files %}
+            <div class="card">
+                <h2>{{ file.name }}</h2>
+                <div class="btn">
+                    <a class="a-detail" href="{% url 'file' file.id %}">Подробнее</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
