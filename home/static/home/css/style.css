@@ -37,17 +37,21 @@ h3 {
     padding: 0px 0px 25px 80px;
 }
 
-.add-btn {
-    margin-left: 80px;
-    height: 40px;
-    width: 150px;
-    border-radius: 5px;
-    background-color: #0784CA;
-}
-
 .add-link {
+    margin-left: 80px;
+    padding: 13px;
     color: #fff;
     text-decoration: none;
+    border-radius: 5px;
+    background-color: #155E87;
+}
+
+.delete-link {
+    padding: 13px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #B61E1E;
 }
 
 .main_container {

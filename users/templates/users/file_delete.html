@@ -3,15 +3,13 @@
 {% load static %}
 
 {% block title %}
-    Файлы
+    {{ file.name }}
 {% endblock %}
 
 {% block main %}
-    <h1>Файлы</h1>
+    <h1>Удаление файла</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.name }}
-        {{ form.file }}
-        <input type="submit" value="Добавить файл">
+        <input type="submit" value="Удалить файл">
     </form>
 {% endblock %}

@@ -66,6 +66,9 @@ class File(models.Model):
     def __str__(self):
         return self.user.email
 
+    def get_absolute_url(self):
+        return f'/users/files/{self.id}'
+
     class Meta:
         verbose_name = 'Файл'
         verbose_name_plural = 'Файлы'

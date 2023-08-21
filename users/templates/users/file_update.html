@@ -3,11 +3,11 @@
 {% load static %}
 
 {% block title %}
-    Файлы
+    {{ file.name }}
 {% endblock %}
 
 {% block main %}
-    <h1>Файлы</h1>
+    <h1>Добавить файл</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.name }}

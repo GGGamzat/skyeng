@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.dispatch import receiver
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models.signals import post_save
 
@@ -66,25 +66,6 @@ def save_profile(sender, instance, **kwargs):
 	instance.profile.save()
 
 
-# def files(request):
-#     if request.user.is_authenticated:
-#         files = File.objects.filter(user=request.user)
-#
-#         if request.method == 'POST':
-#             form = FileForm(request.POST, request.FILES)
-#             if form.is_valid():
-#                 form = form.save(commit=False)
-#                 form.name = request.FILES['file'].name
-#                 form.user = request.user
-#                 form.save()
-#                 return redirect('files')
-#         else:
-#             form = FileForm()
-#         return render(request, 'users/files.html', {'files': files, 'form': form})
-#
-#     else:
-#         return render(request, 'users/fail_files.html')
-
 class Files(ListView):
     model = File
     template_name = 'users/files.html'
@@ -99,6 +80,12 @@ def file(request, pk):
     return render(request, 'users/file.html', {'file': file})
 
 
+# class File(DetailView):
+#     model = File
+#     template_name = 'users/file.html'
+#     context_object_name = 'file'
+
+
 def add_file(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
@@ -111,3 +98,16 @@ def add_file(request):
     else:
         form = FileForm()
     return render(request, 'users/add_file.html', {'form': form})
+
+
+class FileUpdate(UpdateView):
+    model = File
+    template_name = 'users/file_update.html'
+
+    fields = ['name', 'file']
+
+
+class FileDelete(DeleteView):
+    model = File
+    success_url = '/users/files/'
+    template_name = 'users/file_delete.html'

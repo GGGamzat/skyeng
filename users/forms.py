@@ -33,4 +33,4 @@ class FileForm(ModelForm):
 
 	class Meta:
 		model = File
-		fields = ['file']
+		fields = ['name', 'file']
